@@ -10,6 +10,11 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :type %>
+    <%= f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "type" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :question_type %>
     <%= f.select :question_type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type" %>
   </div>

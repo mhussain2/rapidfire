@@ -29,7 +29,7 @@ module Rapidfire
             text
           end
       end
-      @attempt.save!
+      @attempt.save!(options)
     end
 
     def save(options = {})
@@ -58,7 +58,7 @@ module Rapidfire
         self.submitted_on = Time.zone.now
         self.priority = 'Normal'
         self.status = Status.first
-        self.user = User.first
+        # self.user = User.first
         @attempt = Attempt.new(user: user, survey: survey, submitted_on: submitted_on, priority: priority, status: status)
         @answers = @survey.questions.collect do |question|
           @attempt.answers.build(question_id: question.id)

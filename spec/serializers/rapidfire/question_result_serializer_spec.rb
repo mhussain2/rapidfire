@@ -44,7 +44,7 @@ describe Rapidfire::QuestionResultSerializer do
     end
 
     it "converts to with a hash of results" do
-      expect(json_data["question_type"]).to eq "Rapidfire::Questions::Radio"
+      expect(json_data["type"]).to eq "Rapidfire::Questions::Radio"
       expect(json_data["question_text"]).to eq aggregatable_result.question.question_text
       expect(json_data["results"]).not_to be_empty
       expect(json_data["results"]).to be_a Hash

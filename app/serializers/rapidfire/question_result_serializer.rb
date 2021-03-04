@@ -3,7 +3,7 @@ module Rapidfire
     attributes :question_type, :question_text, :results
 
     def question_type
-      object.question.question_type
+      object.question.type
     end
 
     def question_text

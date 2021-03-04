@@ -1,7 +1,7 @@
 module Rapidfire
   module ApplicationHelper
     def render_answer_form_helper(answer, form)
-      partial = answer.question.question_type.to_s.split("::").last.downcase
+      partial = answer.question.type.to_s.split("::").last.downcase
       render partial: "answer_wrapper", locals: { f: form, answer: answer, partial: partial }
     end
 

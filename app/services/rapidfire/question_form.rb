@@ -19,7 +19,7 @@ module Rapidfire
     end
 
     attr_accessor :survey, :question, :default_text, :placeholder, :multi_select, :required,
-      :question_type, :question_text, :position, :active, :answer_options, :answer_presence,
+      :type, :question_type, :question_text, :position, :active, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to
 
@@ -38,10 +38,10 @@ module Rapidfire
     private
     def create_question
       klass = nil
-      if QUESTION_TYPES.values.include?(question_type)
-        klass = question_type.constantize
+      if QUESTION_TYPES.values.include?(type)
+        klass = type.constantize
       else
-        errors.add(:question_type, :invalid)
+        errors.add(:type, :invalid)
         return false
       end
 
@@ -75,6 +75,7 @@ module Rapidfire
     end
 
     def from_question_to_attributes(question)
+      self.type = question.type
       self.question_type = question.question_type
       self.survey  = question.survey
       self.question_text   = question.question_text

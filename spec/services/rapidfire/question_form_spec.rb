@@ -23,7 +23,7 @@ describe Rapidfire::QuestionForm do
       let(:proxy)     { described_class.new(survey: survey, question: question) }
 
       it "persists question params" do
-        expect(proxy.question_type).to eq(question.question_type)
+        expect(proxy.type).to eq(question.type)
         expect(proxy.survey).to eq(question.survey)
         expect(proxy.question_text).to  eq(question.question_text)
         expect(proxy.position).to  eq(question.position)
@@ -41,7 +41,7 @@ describe Rapidfire::QuestionForm do
       context "when question params are valid" do
         let(:params) do
           {
-            question_type:  "Rapidfire::Questions::Checkbox",
+            type:  "Rapidfire::Questions::Checkbox",
             question_text:  "Your mood today",
             answer_options: "good\r\nbad"
           }
@@ -63,7 +63,7 @@ describe Rapidfire::QuestionForm do
 
       context "when question params are invalid" do
         let(:params) do
-          { question_type: "Rapidfire::Questions::Checkbox" }
+          { type: "Rapidfire::Questions::Checkbox" }
         end
 
         it "fails to presist the question" do
