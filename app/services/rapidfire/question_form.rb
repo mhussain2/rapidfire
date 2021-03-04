@@ -19,7 +19,7 @@ module Rapidfire
     end
 
     attr_accessor :survey, :question, :default_text, :placeholder, :multi_select, :required,
-      :type, :question_type, :question_text, :position, :active, :answer_options, :answer_presence,
+      :type, :question_text, :position, :active, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to
 
@@ -55,7 +55,7 @@ module Rapidfire
     def to_question_params
       {
         :survey => survey,
-        :question_type  => question_type,
+        :type => type,
         :question_text  => question_text,
         :position => position,
         :active => active,
@@ -76,7 +76,6 @@ module Rapidfire
 
     def from_question_to_attributes(question)
       self.type = question.type
-      self.question_type = question.question_type
       self.survey  = question.survey
       self.question_text   = question.question_text
       self.position = question.position

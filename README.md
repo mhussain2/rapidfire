@@ -141,7 +141,7 @@ output will be like this:
 ```json
 [
 {
-    "question_type": "Rapidfire::Questions::Radio",
+    "type": "Rapidfire::Questions::Radio",
     "question_text": "Who is author of Waiting for godot?",
     "results": {
         "Sublime": 1,
@@ -150,14 +150,14 @@ output will be like this:
     }
 },
 {
-    "question_type": "Rapidfire::Questions::Checkbox",
+    "type": "Rapidfire::Questions::Checkbox",
     "question_text": "Best rock band?",
     "results": {
         "Led Zeppelin": 2
     }
 },
 {
-    "question_type": "Rapidfire::Questions::Date",
+    "type": "Rapidfire::Questions::Date",
     "question_text": "When is your birthday?",
     "results": [
         "04-02-1983",
@@ -165,7 +165,7 @@ output will be like this:
     ]
 },
 {
-    "question_type": "Rapidfire::Questions::Long",
+    "type": "Rapidfire::Questions::Long",
     "question_text": "If Apple made a android phone what it will be called?",
     "results": [
         "Idude",
@@ -173,7 +173,7 @@ output will be like this:
     ]
 },
 {
-    "question_type": "Rapidfire::Questions::Numeric",
+    "type": "Rapidfire::Questions::Numeric",
     "question_text": "Answer of life, universe and everything?",
     "results": [
         "42",
@@ -181,7 +181,7 @@ output will be like this:
     ]
 },
 {
-    "question_type": "Rapidfire::Questions::Select",
+    "type": "Rapidfire::Questions::Select",
     "question_text": "Places you want to visit after death",
     "results": {
         "Iran": 2
