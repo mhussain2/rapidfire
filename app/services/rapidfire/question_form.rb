@@ -18,8 +18,8 @@ module Rapidfire
       result
     end
 
-    attr_accessor :survey, :question, :default_text, :placeholder,
-      :type, :question_text, :position, :answer_options, :answer_presence,
+    attr_accessor :survey, :question, :default_text, :placeholder, :multi_select, :required,
+      :question_type, :question_text, :position, :active, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to
 
@@ -38,10 +38,10 @@ module Rapidfire
     private
     def create_question
       klass = nil
-      if QUESTION_TYPES.values.include?(type)
-        klass = type.constantize
+      if QUESTION_TYPES.values.include?(question_type)
+        klass = question_type.constantize
       else
-        errors.add(:type, :invalid)
+        errors.add(:question_type, :invalid)
         return false
       end
 
@@ -55,10 +55,14 @@ module Rapidfire
     def to_question_params
       {
         :survey => survey,
+        :question_type  => question_type,
         :question_text  => question_text,
         :position => position,
+        :active => active,
         :default_text => default_text,
         :placeholder => placeholder,
+        :multi_select => multi_select,
+        :required => required,
         :answer_options => answer_options,
         :validation_rules => {
           :presence => answer_presence,
@@ -71,12 +75,15 @@ module Rapidfire
     end
 
     def from_question_to_attributes(question)
-      self.type = question.type
+      self.question_type = question.question_type
       self.survey  = question.survey
       self.question_text   = question.question_text
       self.position = question.position
+      self.active = question.active
       self.default_text    = question.default_text
       self.placeholder     = question.placeholder
+      self.multi_select = question.multi_select
+      self.required = question.required
       self.answer_options  = question.answer_options
       self.answer_presence = question.rules[:presence]
       self.answer_minimum_length = question.rules[:minimum]

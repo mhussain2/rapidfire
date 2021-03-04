@@ -15,12 +15,25 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduction %>
+    <%= f.label :version %>
+    <%= f.text_field :version %>
   </div>
 
-  <%= f.label :after_survey_content %>
-  <%= f.text_area :after_survey_content %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 5 %>
+  </div>
+
+  <%= f.label :active %>
+  <%= f.text_field :active %>
+
+  <%#= f.label :after_survey_content %>
+  <%#= f.text_area :after_survey_content %>
 
   <%= f.submit %>
 <% end %>

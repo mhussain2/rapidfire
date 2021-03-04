@@ -8,5 +8,7 @@ module Rapidfire
     else
       belongs_to :user, polymorphic: true
     end
+
+    belongs_to :status
   end
 end

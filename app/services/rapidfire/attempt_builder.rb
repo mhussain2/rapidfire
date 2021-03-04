@@ -1,6 +1,6 @@
 module Rapidfire
   class AttemptBuilder < Rapidfire::BaseService
-    attr_accessor :user, :survey, :questions, :answers, :params, :attempt_id
+    attr_accessor :user, :survey, :submitted_on, :priority, :status, :questions, :answers, :params, :attempt_id
 
     def initialize(params = {})
       super(params)
@@ -29,8 +29,7 @@ module Rapidfire
             text
           end
       end
-
-      @attempt.save!(options)
+      @attempt.save!
     end
 
     def save(options = {})
@@ -51,8 +50,16 @@ module Rapidfire
         self.user = @attempt.user
         self.survey = @attempt.survey
         self.questions = @survey.questions
+
+        self.submitted_on = @survey.submitted_on
+        self.priority = @survey.priority
+        self.status = @survey.status
       else
-        @attempt = Attempt.new(user: user, survey: survey)
+        self.submitted_on = Time.zone.now
+        self.priority = 'Normal'
+        self.status = Status.first
+        self.user = User.first
+        @attempt = Attempt.new(user: user, survey: survey, submitted_on: submitted_on, priority: priority, status: status)
         @answers = @survey.questions.collect do |question|
           @attempt.answers.build(question_id: question.id)
         end

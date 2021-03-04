@@ -5,5 +5,7 @@ module Rapidfire
     has_many :attempts
 
     validates :name, :presence => true
+
+    # has_rich_text :description
   end
 end
